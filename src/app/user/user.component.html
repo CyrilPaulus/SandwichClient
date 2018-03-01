@@ -1,0 +1,50 @@
+
+<ul>
+  <li *ngFor="let user of users">
+    {{user.firstName}} {{user.lastName}} ({{user.code}})
+    <button class="btn btn-sm btn-primary" (click)="edit(user)">Edit</button>
+    <button class="btn btn-sm btn-danger" (click)="delete(user)">Delete</button>
+
+    <form *ngIf="user === editedUser">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="code">Code</label>
+          <input name="code" class="form-control" id="code" [(ngModel)]="editedUser.code" required>          
+        </div>
+        <div class="form-group">
+          <label for="firstName">First name</label>
+          <input name="firstName" class="form-control" id="firstName" [(ngModel)]="editedUser.firstName" required>          
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last name</label>
+          <input name="lastName" class="form-control" id="lastName" [(ngModel)]="editedUser.lastName" required>          
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+      <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
+    </form>
+
+  </li>
+</ul>
+
+<button *ngIf="createUser === null" type="submit" class="btn btn-primary" (click)="showCreate()">Create user</button>
+
+<form *ngIf="createUser !== null">
+  <div class="form-group">
+    <div class="form-group">
+      <label for="createCode">Code</label>
+      <input name="createCode" class="form-control" id="createCode" [(ngModel)]="createUser.code" required>          
+    </div>
+    <div class="form-group">
+      <label for="createFirstName">First name</label>
+      <input name="createFirstName" class="form-control" id="createFirstName" [(ngModel)]="createUser.firstName" required>          
+    </div>
+    <div class="form-group">
+      <label for="createLastName">Last name</label>
+      <input name="createLastName" class="form-control" id="createLastName" [(ngModel)]="createUser.lastName" required>          
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="create()">Save</button>
+  <button type="submit" class="btn btn-primary" (click)="cancelCreate()">Cancel</button>
+</form>
+
