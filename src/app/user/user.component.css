@@ -1,0 +1,28 @@
+ .mat-row:hover {
+    background-color: #eeeeee;
+ }
+
+ 
+ .user-cell {
+     display: flex;
+     align-items: center;
+ }
+
+ .user-name {
+     flex-grow: 1;
+ }
+
+ .user-buttons {
+     padding: 0px 10px;
+     display: none;
+ }
+
+ .mat-row:hover .user-buttons {
+    display: block;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+}

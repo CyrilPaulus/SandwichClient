@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+
+  .buttons {
+      text-align: right;
+  }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

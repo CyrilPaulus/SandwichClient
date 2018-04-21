@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { UserService, User } from '../core/user.service';
+import { MatDialog } from '@angular/material';
+import { UserEditDialogComponent } from './user-edit-dialog/user-edit-dialog.component';
+import { UserCreateDialogComponent } from './user-create-dialog/user-create-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -9,11 +12,13 @@ import { UserService, User } from '../core/user.service';
 })
 export class UserComponent implements OnInit {
 
-  public users: User[] = [];
-  public editedUser: User = null;
-  public createUser: User = null;
+  public users: User[] = [];   
+  public columnsToDisplay = ['userName', 'userCode', 'balance'];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe(x => {
@@ -22,40 +27,27 @@ export class UserComponent implements OnInit {
   }
 
   public edit(user: User) {
-    this.editedUser = user;
-  }
-
-  public cancel() {
-    this.editedUser = null;
-  }
-
-  public save() {
-    this.userService.updateUser(this.editedUser).subscribe(x =>{
-      this.ngOnInit();
+    this.dialog.open(UserEditDialogComponent, {
+      height: '400px',
+      width: '600px',
+      data: user
     });
   }
 
   public create() {
-    this.userService.createUser(this.createUser).subscribe(x =>{
-      this.ngOnInit();
-      this.createUser = null;
+    let dialog = this.dialog.open(UserCreateDialogComponent, {
+      height: '400px',
+      width: '600px'      
     });
-  }
-
-  public showCreate() {
-    this.createUser = new User(0, null, null, null, 'internal');
-  }
-
-  public cancelCreate() {
-    this.createUser = null;
-  }
+    dialog.afterClosed().subscribe(x =>{
+      this.ngOnInit();
+    });    
+  } 
 
   public delete(user: User) {
     this.userService.deleteUser(user).subscribe(x => {
       this.ngOnInit()
     });
   }
-
-
 }
 

@@ -1,50 +1,44 @@
+<h2 class="content-title">Users</h2>
 
-<ul>
-  <li *ngFor="let user of users">
-    {{user.firstName}} {{user.lastName}} ({{user.code}})
-    <button class="btn btn-sm btn-primary" (click)="edit(user)">Edit</button>
-    <button class="btn btn-sm btn-danger" (click)="delete(user)">Delete</button>
+<mat-card>
+  <mat-table [dataSource]="users">
 
-    <form *ngIf="user === editedUser">
-      <div class="form-group">
-        <div class="form-group">
-          <label for="code">Code</label>
-          <input name="code" class="form-control" id="code" [(ngModel)]="editedUser.code" required>          
+    <ng-container matColumnDef="userName">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user" class="user-cell">
+        <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+        <div class="user-buttons">    
+          <button mat-icon-button (click)="edit(user)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(user)">
+              <mat-icon>deleted</mat-icon>
+          </button>
         </div>
-        <div class="form-group">
-          <label for="firstName">First name</label>
-          <input name="firstName" class="form-control" id="firstName" [(ngModel)]="editedUser.firstName" required>          
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last name</label>
-          <input name="lastName" class="form-control" id="lastName" [(ngModel)]="editedUser.lastName" required>          
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-      <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
-    </form>
+      </mat-cell>
+    </ng-container>
 
-  </li>
-</ul>
+    <ng-container matColumnDef="userCode">
+      <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.code}}</mat-cell>
+    </ng-container>
 
-<button *ngIf="createUser === null" type="submit" class="btn btn-primary" (click)="showCreate()">Create user</button>
+    <ng-container matColumnDef="balance">
+        <mat-header-cell *matHeaderCellDef> Balance </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.balance}} €</mat-cell>
+      </ng-container>
 
-<form *ngIf="createUser !== null">
-  <div class="form-group">
-    <div class="form-group">
-      <label for="createCode">Code</label>
-      <input name="createCode" class="form-control" id="createCode" [(ngModel)]="createUser.code" required>          
-    </div>
-    <div class="form-group">
-      <label for="createFirstName">First name</label>
-      <input name="createFirstName" class="form-control" id="createFirstName" [(ngModel)]="createUser.firstName" required>          
-    </div>
-    <div class="form-group">
-      <label for="createLastName">Last name</label>
-      <input name="createLastName" class="form-control" id="createLastName" [(ngModel)]="createUser.lastName" required>          
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="create()">Save</button>
-  <button type="submit" class="btn btn-primary" (click)="cancelCreate()">Cancel</button>
-</form>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
 
+
+  </mat-table>
+</mat-card>
+
+<div class="fab-container">
+  <button mat-fab (click)="create()">
+    <mat-icon>
+      add
+    </mat-icon>
+  </button>
+</div>

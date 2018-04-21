@@ -1,11 +1,21 @@
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">      
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link" routerLink="/user" routerLinkActive="active">Users</a>
-        <a class="nav-link" routerLink="/transaction" routerLinkActive="active" href="#">Transactions</a>        
-      </nav>
-    </div>
-  </header>
+<div class="mat-elevation-z6">
+  <mat-toolbar color="primary">
+    <a mat-button routerLink="/transactions" routerLinkActive="active">
+      <mat-icon>
+        attach_money
+      </mat-icon>
+      Transactions
+    </a>
+
+    <a mat-button routerLink="/users" routerLinkActive="active">
+      <mat-icon>
+        person
+      </mat-icon>
+      Users
+    </a>
+  </mat-toolbar>
+</div>
+
+<div class="container">
   <router-outlet></router-outlet>
 </div>
