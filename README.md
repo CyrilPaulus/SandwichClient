@@ -1,6 +1,6 @@
-# SandwichClient
+# Project Title
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
+A simple client made in angular to handle sandwichs transactions inside a company.
 
 ## Development server
 
@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Authors
+
+* **Cyril Paulus** - *Initial work* - [CyrilPaulus](https://github.com/CyrilPaulus)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Will likely never be finished
