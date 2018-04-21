@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
 import { UserEditDialogComponent } from './user/user-edit-dialog/user-edit-dialog.component';
 import { UserCreateDialogComponent } from './user/user-create-dialog/user-create-dialog.component';
+import { SharedModule } from './shared/shared.module';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CoreModule,
     FormsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

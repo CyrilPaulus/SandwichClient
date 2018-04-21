@@ -1,0 +1,11 @@
+<h3>{{options.title}}</h3>
+<div class="container" [innerHTML]="options.message">  
+</div>
+<div class="buttons">
+  <button mat-button (click)="cancel()">
+    {{options.cancelTitle}}
+  </button>
+  <button mat-button (click)="confirm()">
+    {{options.confirmTitle}}
+  </button>
+</div>
