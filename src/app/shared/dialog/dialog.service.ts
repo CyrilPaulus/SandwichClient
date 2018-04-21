@@ -12,8 +12,7 @@ export class DialogService {
     }
 
     public showConfirmation(message: string, title= "Comfirmation required", confirmTitle = "Confirm", cancelTitle = "Cancel"): Observable<boolean> {
-        let dialog = this.dialog.open(ConfirmationDialogComponent, {
-            height: '400px',
+        let dialog = this.dialog.open(ConfirmationDialogComponent, {            
             width: '600px',
             data: new ConfirmationDialogOptions(
                 message,

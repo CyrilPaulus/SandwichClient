@@ -24,14 +24,14 @@ export class UserService {
       this.mapUser(x.json()));
   }
 
-  public updateUser(user: User, firstName: string, lastName: string, code: string): Observable<User>{
-    let newUser = new User(user.id, code, firstName, lastName, user.type, null);
+  public updateUser(user: User, firstName: string, lastName: string, code: string, type:string): Observable<User>{
+    let newUser = new User(user.id, code, firstName, lastName, type, null);
     return this.http.put(environment.apiUrl+ 'user/' + user.id, newUser)
     .map(x => this.mapUser(x.json()));
   }
   
-  public createUser(firstName: string, lastName: string, code: string): Observable<User>{
-    let user = new User(0, code, firstName, lastName, 'internal', null);
+  public createUser(firstName: string, lastName: string, code: string, type: string): Observable<User>{
+    let user = new User(0, code, firstName, lastName, type, null);
     return this.http.post(environment.apiUrl+ 'user', user)
     .map(x => this.mapUser(x.json()));
   }

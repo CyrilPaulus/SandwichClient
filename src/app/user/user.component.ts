@@ -14,7 +14,7 @@ import { DialogService } from '../shared/dialog/dialog.service';
 export class UserComponent implements OnInit {
 
   public users: User[] = [];   
-  public columnsToDisplay = ['userName', 'userCode', 'balance'];
+  public columnsToDisplay = ['userName', 'userCode', 'type', 'balance'];
 
   constructor(
     private userService: UserService,
@@ -29,16 +29,14 @@ export class UserComponent implements OnInit {
   }
 
   public edit(user: User) {
-    this.dialog.open(UserEditDialogComponent, {
-      height: '400px',
+    this.dialog.open(UserEditDialogComponent, {      
       width: '600px',
       data: user
     });
   }
 
   public create() {
-    let dialog = this.dialog.open(UserCreateDialogComponent, {
-      height: '400px',
+    let dialog = this.dialog.open(UserCreateDialogComponent, {      
       width: '600px'      
     });
     dialog.afterClosed().subscribe(x =>{

@@ -14,6 +14,7 @@ export class UserEditDialogComponent implements OnInit {
   public firstName: string;
   public lastName: string;
   public code: string;
+  public type: string;
 
   constructor(
     private dialogRef: MatDialogRef<UserEditDialogComponent>,
@@ -25,6 +26,7 @@ export class UserEditDialogComponent implements OnInit {
     this.firstName = data.firstName;
     this.lastName = data.lastName;
     this.code = data.code;
+    this.type = data.type;
   }
 
   ngOnInit() {
@@ -35,10 +37,11 @@ export class UserEditDialogComponent implements OnInit {
   }
 
   public save() {
-    this.userService.updateUser(this.user, this.firstName, this.lastName, this.code).subscribe(x => {
+    this.userService.updateUser(this.user, this.firstName, this.lastName, this.code, this.type).subscribe(x => {
       this.user.code = x.code;
       this.user.firstName = x.firstName;
       this.user.lastName = x.lastName;
+      this.user.type = x.type;
       this.dialogRef.close();
     });
   }

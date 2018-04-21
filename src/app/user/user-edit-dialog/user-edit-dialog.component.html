@@ -1,20 +1,37 @@
 <h3>Edit user info</h3>
-<div class="form-container">
-  <mat-form-field>
-    <input matInput [(ngModel)]="firstName" placeholder="First Name">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [(ngModel)]="lastName" placeholder="Last Name">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [(ngModel)]="code" placeholder="Code">
-  </mat-form-field>
-</div>
+<form class="form-container" #editUserForm="ngForm">  
+    <mat-form-field>
+      <input name="firstName" matInput [(ngModel)]="firstName" placeholder="First Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="lastName" matInput [(ngModel)]="lastName" placeholder="Last Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="code" matInput [(ngModel)]="code" placeholder="Code" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select name="type" placeholder="Type" [(ngModel)]="type" required>
+        <mat-option [value]="'internal'">
+          Internal
+        </mat-option>
+        <mat-option [value]="'external'">
+          External
+        </mat-option>
+        <mat-option [value]="'student'">
+          Student
+        </mat-option>
+        <mat-option [value]="'other'">
+          Other
+        </mat-option>
+      </mat-select>
+    </mat-form-field>  
+</form>
 <div class="buttons">
   <button mat-button (click)="cancel()">
     Cancel
   </button>
-  <button mat-button (click)="save()">
+  <button mat-button (click)="save()" [disabled]="!editUserForm.form.valid">
       Save
   </button>
 </div>

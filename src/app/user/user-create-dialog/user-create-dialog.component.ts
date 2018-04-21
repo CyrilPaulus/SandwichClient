@@ -12,6 +12,7 @@ export class UserCreateDialogComponent implements OnInit {
   public firstName: string;
   public lastName: string;
   public code: string;
+  public type: string;
 
   constructor(
     private dialogRef: MatDialogRef<UserCreateDialogComponent>,
@@ -28,7 +29,7 @@ export class UserCreateDialogComponent implements OnInit {
   }
 
   public save() {
-    this.userService.createUser(this.firstName, this.lastName, this.code).subscribe(x => {
+    this.userService.createUser(this.firstName, this.lastName, this.code, this.type).subscribe(x => {
       this.dialogRef.close();
     });
   }
