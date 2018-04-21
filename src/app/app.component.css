@@ -1,7 +1,7 @@
 .container {
     margin: auto;
-    max-width: 1024px;
-    padding: 32px;
+    margin-top: 32px;
+    max-width: 1024px;    
     flex-grow: 1;
     overflow: auto;
     width: 100%;

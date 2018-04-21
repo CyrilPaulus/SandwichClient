@@ -26,3 +26,8 @@
     bottom: 25px;
     right: 30px;
 }
+
+:host {
+    padding: 0 32px;
+    display: block;
+}

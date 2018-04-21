@@ -10,10 +10,13 @@ import { FormsModule } from '@angular/forms';
 import { UserEditDialogComponent } from './user/user-edit-dialog/user-edit-dialog.component';
 import { UserCreateDialogComponent } from './user/user-create-dialog/user-create-dialog.component';
 import { SharedModule } from './shared/shared.module';
+import { BalanceComponent } from './balance/balance.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
+  { path: 'balance', component: BalanceComponent },
   { path: '', redirectTo: '/user', pathMatch: 'full' }
 ]
 
@@ -22,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     UserComponent,
     UserEditDialogComponent,
-    UserCreateDialogComponent
+    UserCreateDialogComponent,
+    BalanceComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,7 +38,8 @@ const routes: Routes = [
     CoreModule,
     FormsModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
