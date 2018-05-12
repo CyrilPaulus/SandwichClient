@@ -12,10 +12,13 @@ import { UserCreateDialogComponent } from './user/user-create-dialog/user-create
 import { SharedModule } from './shared/shared.module';
 import { BalanceComponent } from './balance/balance.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionCreateDialogComponent } from './transaction/transaction-create-dialog/transaction-create-dialog.component';
 
 
 const routes: Routes = [
-  { path: 'user', component: UserComponent },
+  { path: 'users', component: UserComponent },
+  { path: 'transactions', component: TransactionComponent },
   { path: 'balance', component: BalanceComponent },
   { path: '', redirectTo: '/user', pathMatch: 'full' }
 ]
@@ -26,7 +29,9 @@ const routes: Routes = [
     UserComponent,
     UserEditDialogComponent,
     UserCreateDialogComponent,
-    BalanceComponent
+    TransactionCreateDialogComponent,
+    BalanceComponent,
+    TransactionComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -45,7 +50,9 @@ const routes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     UserEditDialogComponent,
-    UserCreateDialogComponent
+    UserCreateDialogComponent,
+    TransactionCreateDialogComponent
+
   ]
 })
 export class AppModule { }

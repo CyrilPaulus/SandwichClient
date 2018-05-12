@@ -1,0 +1,32 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+
+  .buttons {
+      text-align: right;
+  }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/deep/ .order-form .mat-form-field-infix {
+    width: auto;
+}
+
+.order-form {
+    display: flex;
+    align-items: baseline;
+}
+
+.order-form > * {
+    margin: 0 5px;
+}

@@ -1,0 +1,100 @@
+<h3>Create new user</h3>
+<form  #newTransactionForm="ngForm">
+
+
+  <mat-form-field>
+    <mat-select name="type" placeholder="Type" [(ngModel)]="type" required (ngModelChange)="refreshValidation()">
+      <mat-option [value]="'order'">
+        Order
+      </mat-option>
+      <mat-option [value]="'credit'">
+        Credit
+      </mat-option>
+      <mat-option [value]="'debit'">
+        Debit
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="order-form">
+    <mat-form-field>
+      <input name="date" matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input name="code" placeholder="User" matInput [matAutocomplete]="auto" [(ngModel)]="userCode" required>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let user of users" [value]="user.code">
+          {{ user.code }}
+        </mat-option>
+      </mat-autocomplete>
+  
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input #amountCtrl="ngModel" name="amount" placeholder="Amount" matInput [(ngModel)]="amount" required type="number" [appCustomValidator]="validateTotal()">
+      <mat-error *ngIf="amountCtrl.invalid">
+        {{getAmountError()}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="type === 'order'">
+    <h4>Orders</h4>
+    <div class="order-form" *ngFor="let order of orders; let i = index">
+
+      <mat-form-field>
+        <input [name]="'code'+i" placeholder="User" matInput [matAutocomplete]="autoChild" [(ngModel)]="order.userCode" required>
+        <mat-autocomplete #autoChild="matAutocomplete">
+          <mat-option *ngFor="let user of users" [value]="user.code">
+            {{ user.code }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [name]="'sandwich'+i" placeholder="Sandwich" matInput [matAutocomplete]="sandwich" [(ngModel)]="order.sandwich" required
+          (ngModelChange)="sandwichChanged($event, order)">
+        <mat-autocomplete #sandwich="matAutocomplete">
+          <mat-option *ngFor="let sandwich of sandwiches" [value]="sandwich.name">
+            {{ sandwich.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input #innerAmountCtrl="ngModel" [name]="'amount'+i" placeholder="Amount" matInput [(ngModel)]="order.amount" required [appCustomValidator]="validateInner(innerAmountCtrl)"
+          type="number" (ngModelChange)="refreshValidation()">
+        <mat-error *ngIf="innerAmountCtrl.invalid">
+          {{getInnerAmountError(innerAmountCtrl)}}
+        </mat-error>
+      </mat-form-field>
+
+
+      <button mat-mini-fab (click)="removeOrder(order)" color="primary">
+        <mat-icon>
+          remove
+        </mat-icon>
+      </button>
+
+
+    </div>
+
+    <button mat-mini-fab (click)="addOrder()">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button>
+  </div>
+
+</form>
+<div class="buttons">
+  <button mat-button (click)="cancel()">
+    Cancel
+  </button>
+  <button mat-button (click)="save()" [disabled]="!newTransactionForm.form.valid || !validateTotal()">
+    Create
+  </button>
+</div>

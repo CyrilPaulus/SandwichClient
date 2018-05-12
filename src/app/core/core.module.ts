@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SandwichService } from './sandwich.service';
 import { UserService } from './user.service';
 import { HttpModule } from '@angular/http';
+import { TransactionService } from './transaction.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,9 @@ import { HttpModule } from '@angular/http';
     HttpModule 
   ], 
   providers: [
-    UserService
+    UserService,
+    TransactionService,
+    SandwichService
   ]
 })
 export class CoreModule { }

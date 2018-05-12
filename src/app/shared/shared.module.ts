@@ -4,6 +4,7 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
 import { AppMaterialModule } from '../app-material.module';
 import { DialogService } from './dialog/dialog.service';
 import { UserTypePipe } from './pipes/user-type.pipe';
+import { CustomValidatorDirective } from './directives/custom-validator.directive';
 
 @NgModule({
   imports: [
@@ -12,9 +13,11 @@ import { UserTypePipe } from './pipes/user-type.pipe';
   ],
   declarations: [
     ConfirmationDialogComponent,
-    UserTypePipe],
+    UserTypePipe,
+    CustomValidatorDirective],
   exports: [
-    UserTypePipe
+    UserTypePipe,
+    CustomValidatorDirective
   ],
   entryComponents: [
     ConfirmationDialogComponent

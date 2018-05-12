@@ -8,7 +8,7 @@ body {
   }
 
 .content-title {
-  font-size: 18px;
+    font-size: 18px;
     font-weight: 500;
     line-height: 24px;
     color: #212121;
@@ -21,4 +21,10 @@ html,
 body {
   width: 100%;
   height: 100%;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 25px;
+  right: 30px;
 }

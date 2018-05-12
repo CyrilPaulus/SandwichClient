@@ -12,7 +12,10 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatAutocompleteModule
 } from '@angular/material'
 
 @NgModule({
@@ -30,7 +33,10 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule
   ]
 })
 export class AppMaterialModule { }
